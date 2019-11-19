@@ -6,7 +6,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  */
-import electron, { app } from 'electron'; 
+var electron = require('electron'); 
 import appSettings from 'electron-settings';
 
 import ServiceBase from './ServiceBase';

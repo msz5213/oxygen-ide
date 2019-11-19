@@ -6,6 +6,7 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  */
+
 import path from 'path';
 import cp from 'child_process';
 import detectPort from 'detect-port';
@@ -31,11 +32,12 @@ const ON_CHROME_DRIVER_ERROR = 'ON_CHROME_DRIVER_ERROR';
 const CHROMEDRIVER_BASE_URL = 'https://chromedriver.storage.googleapis.com';
 
 export default class SeleniumService extends ServiceBase {
-    seleniumProc = null;
-    availablePort = null;
 
     constructor() {
         super();
+
+        this.seleniumProc = null;
+        this.availablePort = null;
 
         this.downloadChromeDriver = this.downloadChromeDriver.bind(this);
     }
@@ -332,7 +334,7 @@ export default class SeleniumService extends ServiceBase {
         });
     }
 
-    getChromeDriverDownloadUrl = (driverVersion) => {
+    getChromeDriverDownloadUrl(driverVersion){
         var zipFilename;
         switch (process.platform) {
         case 'win32':

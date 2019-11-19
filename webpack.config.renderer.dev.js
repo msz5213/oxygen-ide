@@ -54,20 +54,37 @@ export default merge.smart(baseConfig, {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(js|jsx)?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         cacheDirectory: true,
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-react',
+                            '@babel/preset-flow',
+                            {
+                                'plugins': [
+                                    ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+                                    '@babel/plugin-syntax-class-properties',
+                                    'transform-class-properties'
+                                ]
+                            }
+                        ],
                         plugins: [
                             // Here, we include babel plugins that are only required for the
                             // renderer process. The 'transform-*' plugins must be included
                             // before react-hot-loader/babel
+                            '@babel/plugin-syntax-dynamic-import',
+                            '@babel/plugin-syntax-import-meta',
+                            '@babel/plugin-transform-runtime',
+                            ['@babel/plugin-proposal-class-properties', { 'loose': true }],
+                            '@babel/plugin-syntax-class-properties',
                             'transform-class-properties',
-                            'transform-es2015-classes',
+                            '@babel/plugin-transform-classes',
                             'react-hot-loader/babel'
-                        ],
+                        ]
                     }
                 }
             },

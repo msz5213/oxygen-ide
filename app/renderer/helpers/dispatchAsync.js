@@ -6,8 +6,6 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  */
-import 'babel-polyfill';
-
 
 /**
 * This does the async request and provides Redux thunk feedback 
