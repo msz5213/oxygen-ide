@@ -233,7 +233,6 @@ export default class CloudProvidersService extends ServiceBase {
                 try {
                     const browsersAndDevices = await provider.getBrowsersAndDevices(userName, key);
                 
-                
                     if (browsersAndDevices && Array.isArray(browsersAndDevices) && browsersAndDevices.length > 0) {
                         // sauceLabs
                         return this.sortToBrowsersAndDevice(browsersAndDevices, providerName);
@@ -246,10 +245,10 @@ export default class CloudProvidersService extends ServiceBase {
                     } else {
                         throw new Error('browsersAndDevices does not exist.', browsersAndDevices);
                     }
-    
                 }
                 catch (e) {
                     console.warn(`Failed to retrieve devices and browsers data from provider: ${providerName}`);
+                    console.warn('Reson : ', e);
                     return [];
                 }                
             } else {

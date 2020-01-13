@@ -63,11 +63,11 @@ export default class SauceLabsProvider extends CloudProviderBase {
             }
 
             if (target.osName) {
-                caps.osName = target.osName;
+                caps.platformName = target.osName;
             }
             
             if (target.osVersion) {
-                caps.osVersion = target.osVersion;
+                caps.platformName = caps.platformName + ' ' + target.osVersion;
             }
         } else {
             if (target.osName) {
